@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://artembelyaev1212-ops.github.io/Legion/sitemap.xml
