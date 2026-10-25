@@ -428,3 +428,6 @@ a.proj-img{display:block;color:inherit}
 .fx-stage{display:inline-flex;align-items:center;gap:10px;font-variant-numeric:tabular-nums}
 .fx-stage i{width:8px;height:8px;background:var(--brass);transform:rotate(45deg);box-shadow:0 0 12px var(--brass);animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.35}}
+/* обложка с анимацией: темним только зону текста, сцена справа видна */
+.hero::after{background:linear-gradient(90deg,rgba(20,17,13,.88) 0%,rgba(20,17,13,.6) 34%,rgba(20,17,13,.12) 62%,rgba(20,17,13,0) 100%),linear-gradient(180deg,rgba(20,17,13,.55) 0%,rgba(20,17,13,0) 16%,rgba(20,17,13,0) 82%,var(--oak) 100%)}
+@media (max-width:700px){.hero::after{background:linear-gradient(180deg,rgba(20,17,13,.55) 0%,rgba(20,17,13,.35) 22%,rgba(20,17,13,.8) 52%,rgba(20,17,13,.92) 80%,var(--oak) 100%)}}
