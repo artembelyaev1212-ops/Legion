@@ -111,7 +111,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .light .btn.ghost{border-color:var(--ink);color:var(--ink);background:transparent}
 .hero-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:44px;padding-top:22px;border-top:1px solid rgba(241,235,226,.18);font-family:var(--f-mono);font-size:13px;color:#BFB5A7;letter-spacing:.04em}
 .hero-meta b{color:var(--brass);font-weight:500}
-.dots{display:flex;gap:8px;margin-left:auto}
+.slide-cap{margin-left:auto;color:var(--cream);opacity:.85;transition:opacity .5s}
+.dots{display:flex;gap:8px}
+@media (max-width:700px){.slide-cap{margin-left:0;width:100%;order:9}}
 .dots button{width:28px;height:3px;border:0;padding:0;background:rgba(241,235,226,.25);cursor:pointer;position:relative;overflow:hidden}
 .dots button.on::after{content:"";position:absolute;inset:0;background:var(--brass);animation:fill 6s linear forwards}
 @keyframes fill{from{transform:translateX(-100%)}to{transform:none}}
@@ -125,6 +127,24 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .mq span::after{content:"";width:10px;height:10px;background:var(--brass);transform:rotate(45deg)}
 .marquee:hover .mq{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
+
+/* design project */
+.design{background:radial-gradient(ellipse 80% 60% at 80% 0%,#2A2117 0%,var(--oak) 60%);overflow:hidden}
+.dp-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:48px}
+.gold{color:var(--brass)}
+.dp-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(120px,15vw,210px);gap:10px}
+.dp-grid button{position:relative;padding:0;border:0;overflow:hidden;cursor:zoom-in;background:var(--oak-3);min-width:0}
+.dp-grid img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter .6s}
+.dp-grid button:hover img{transform:scale(1.07)}
+.dp-grid button span{position:absolute;left:0;bottom:0;padding:22px 14px 12px;width:100%;text-align:left;font-size:14px;color:var(--cream);background:linear-gradient(transparent,rgba(10,8,6,.8));opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s var(--ease)}
+.dp-grid button:hover span,.dp-grid button:focus-visible span{opacity:1;transform:none}
+.dp-grid .a{grid-column:span 4;grid-row:span 2}.dp-grid .b{grid-column:span 2;grid-row:span 2}
+.dp-grid .c{grid-column:span 2;grid-row:span 2}.dp-grid .d{grid-column:span 2;grid-row:span 1}.dp-grid .e{grid-column:span 2;grid-row:span 2}
+.dp-grid .f{grid-column:span 2;grid-row:span 1}.dp-grid .g{grid-column:span 3;grid-row:span 2}.dp-grid .h{grid-column:span 3;grid-row:span 2}
+.dp-feat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:48px;border-top:1px solid var(--line);padding-top:28px}
+.dp-feat b{display:block;font-family:var(--f-display);font-weight:600;font-size:16px;margin-bottom:6px;color:var(--cream)}
+.dp-feat span{font-size:14.5px;color:var(--muted)}
+@media (max-width:880px){.dp-head{grid-template-columns:1fr}.dp-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}.dp-grid>button{grid-column:span 1!important;grid-row:span 1!important}.dp-grid .a,.dp-grid .g{grid-column:span 2!important;grid-row:span 2!important}.dp-feat{grid-template-columns:repeat(2,minmax(0,1fr))}.dp-grid button span{opacity:1;transform:none}}
 
 /* personal */
 .me{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:center}
@@ -305,6 +325,7 @@ footer .logo{font-size:16px}
   <div class="wrap">
     <a class="logo" href="#hero" aria-label="Легион — на главную"><i></i>ЛЕГИОН</a>
     <nav class="nav" aria-label="Разделы">
+      <a href="#design">Дизайн</a>
       <a href="#about">О нас</a>
       <a href="#services">Услуги</a>
       <a href="#projects">Объекты</a>
@@ -317,6 +338,7 @@ footer .logo{font-size:16px}
   </div>
 </header>
 <nav class="mnav" id="mnav" aria-label="Меню">
+  <a href="#design">Дизайн-проект</a>
   <a href="#about">О нас</a>
   <a href="#services">Услуги</a>
   <a href="#projects">Объекты</a>
@@ -329,10 +351,12 @@ footer .logo{font-size:16px}
 <main>
   <section class="hero" id="hero">
     <div class="slides" id="slides" aria-hidden="true">
-      <img class="on" src="img/7911.jpg" alt="">
-      <img src="img/7966.jpg" alt="" loading="lazy">
-      <img src="img/7921.jpg" alt="" loading="lazy">
-      <img src="img/7939.jpg" alt="" loading="lazy">
+      <img class="on" src="img/d2.jpg" alt="" data-cap="Дизайн-проект · кабинет руководителя">
+      <img src="img/7911.jpg" alt="" loading="lazy" data-cap="Объект · офис в историческом здании">
+      <img src="img/d10.jpg" alt="" loading="lazy" data-cap="Дизайн-проект · переговорная">
+      <img src="img/7966.jpg" alt="" loading="lazy" data-cap="Объект · ресторан грузинской кухни">
+      <img src="img/d1.jpg" alt="" loading="lazy" data-cap="Дизайн-проект · рабочая зона">
+      <img src="img/7921.jpg" alt="" loading="lazy" data-cap="Объект · зона отдыха в офисе">
     </div>
     <div class="wrap">
       <span class="eyebrow rv-h">ООО «Легион» · Москва и Московская область</span>
@@ -353,7 +377,7 @@ footer .logo{font-size:16px}
         <span><b>Безнал</b></span>
         <span><b>Своя команда</b></span>
         <span><b>Москва и МО</b></span>
-        <div class="dots" id="dots" role="tablist" aria-label="Фото на обложке"></div>
+        <span class="slide-cap" id="slideCap" aria-live="polite"></span><div class="dots" id="dots" role="tablist" aria-label="Фото на обложке"></div>
       </div>
     </div>
   </section>
@@ -364,6 +388,34 @@ footer .logo{font-size:16px}
       <span>Черновая отделка</span><span>Перегородки из ГКЛ</span><span>Потолки «Армстронг»</span><span>Венецианская штукатурка</span><span>Паркет и керамогранит</span><span>Наливные полы</span><span>Стеновые панели</span><span>Плитка</span><span>Электрика</span><span>Фасады</span>
     </div>
   </div>
+
+  <section class="design" id="design">
+    <div class="wrap">
+      <div class="dp-head">
+        <div>
+          <span class="eyebrow rv">Дизайн-проект</span>
+          <h2 class="rv d1" style="margin-top:16px">Кабинет руководителя<br><span class="gold">от идеи до последней рейки</span></h2>
+        </div>
+        <p class="lead rv d2">Наш дизайн-проект: кессонный потолок с подсветкой, стеновые панели из шпона дуба, встроенные стеллажи, аквариум в мебельной стенке, переговорная у панорамных окон. Это визуализации, и именно так мы потом собираем интерьер на объекте.</p>
+      </div>
+      <div class="dp-grid" id="dpGrid">
+        <button type="button" class="a rv" data-k="0"><img src="img/d2.jpg" alt="Переговорная зона с кессонным потолком" loading="lazy"><span>Переговорная зона</span></button>
+        <button type="button" class="b rv d1" data-k="1"><img src="img/d4.jpg" alt="Зона отдыха у панорамных окон" loading="lazy"><span>Зона отдыха</span></button>
+        <button type="button" class="c rv d1" data-k="2"><img src="img/d1.jpg" alt="Рабочая зона с аквариумом" loading="lazy"><span>Рабочая зона</span></button>
+        <button type="button" class="d rv d2" data-k="3"><img src="img/d5.jpg" alt="Стол руководителя и картина" loading="lazy"><span>Стол руководителя</span></button>
+        <button type="button" class="e rv d2" data-k="4"><img src="img/d9.jpg" alt="Встроенная мебель и аквариум" loading="lazy"><span>Встроенная мебель</span></button>
+        <button type="button" class="f rv d3" data-k="5"><img src="img/d7.jpg" alt="Стена с ТВ и стеллажами" loading="lazy"><span>Медиастена</span></button>
+        <button type="button" class="g rv d3" data-k="6"><img src="img/d3.jpg" alt="Кабинет у панорамных окон" loading="lazy"><span>Панорамные окна</span></button>
+        <button type="button" class="h rv d4" data-k="7"><img src="img/d10.jpg" alt="Переговорная у окна" loading="lazy"><span>Переговорная</span></button>
+      </div>
+      <div class="dp-feat">
+        <div class="rv"><b>Кессонный потолок</b><span>Деревянные балки с контурной LED-подсветкой</span></div>
+        <div class="rv d1"><b>Шпон дуба</b><span>Стеновые панели, колонны и встроенные шкафы</span></div>
+        <div class="rv d2"><b>Камень и текстиль</b><span>Мраморные столешницы, ковровые покрытия, портьеры</span></div>
+        <div class="rv d3"><b>Свет по сценариям</b><span>Подвесные светильники, подсветка ниш и карнизов</span></div>
+      </div>
+    </div>
+  </section>
 
   <section class="light" id="about">
     <div class="wrap me">
@@ -406,7 +458,8 @@ footer .logo{font-size:16px}
           <div class="svc-item" data-img="7919"><span class="n">05</span><h3>Полы</h3><span class="pl">+</span><p>Паркет и инженерная доска, керамогранит, кварцвинил, наливные полы.</p></div>
           <div class="svc-item" data-img="7910"><span class="n">06</span><h3>Стеновые панели и рейка</h3><span class="pl">+</span><p>Шпонированные и ламинированные панели, дубовая рейка, молдинги.</p></div>
           <div class="svc-item" data-img="7917"><span class="n">07</span><h3>Плиточные работы</h3><span class="pl">+</span><p>Санузлы, кухни, лестницы, облицовка барных стоек и колонн.</p></div>
-          <div class="svc-item" data-img="7952"><span class="n">08</span><h3>Фасады</h3><span class="pl">+</span><p>Облицовка, утепление, ремонт фасадов, в том числе исторических зданий.</p></div>
+          <div class="svc-item" data-img="d2"><span class="n">08</span><h3>Дизайн-проект и визуализация</h3><span class="pl">+</span><p>Планировка, концепция, 3D-визуализации и рабочая документация для объекта.</p></div>
+          <div class="svc-item" data-img="7952"><span class="n">09</span><h3>Фасады</h3><span class="pl">+</span><p>Облицовка, утепление, ремонт фасадов, в том числе исторических зданий.</p></div>
         </div>
         <div class="svc-view" id="svcView" aria-hidden="true">
           <img class="on" src="img/7932.jpg" alt="" loading="lazy">
@@ -588,7 +641,7 @@ $$('#mnav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 requestAnimationFrame(()=>setTimeout(()=>$('#hero').classList.add('go'),80));
 const slides=$$('#slides img'), dots=$('#dots'); let si=0, timer;
 slides.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Фото '+(i+1));b.onclick=()=>go(i,true);dots.appendChild(b)});
-function go(i,user){slides[si].classList.remove('on');dots.children[si].classList.remove('on');si=i;slides[si].classList.add('on');const d=dots.children[si];d.classList.remove('on');void d.offsetWidth;d.classList.add('on');clearTimeout(timer);timer=setTimeout(()=>go((si+1)%slides.length),6000)}
+function go(i,user){const cap=document.getElementById('slideCap');cap.style.opacity=0;setTimeout(()=>{cap.textContent=slides[i].dataset.cap||'';cap.style.opacity=.85},350);slides[si].classList.remove('on');dots.children[si].classList.remove('on');si=i;slides[si].classList.add('on');const d=dots.children[si];d.classList.remove('on');void d.offsetWidth;d.classList.add('on');clearTimeout(timer);timer=setTimeout(()=>go((si+1)%slides.length),6000)}
 go(0);
 
 /* reveal */
@@ -610,6 +663,7 @@ view.querySelector('img').dataset.k='7932';
 
 /* projects */
 const P=[
+ {hide:true,name:"Дизайн-проект кабинета руководителя (визуализация)",img:["d2","d4","d1","d5","d9","d7","d3","d10"]},
  {k:"01 · Офис",name:"Бизнес-центр в историческом здании",text:"Полная отделка офисов в старинном доме. Сохранили и открыли кирпич, обшили кабинеты дубовыми панелями, уложили паркет, собрали арочные стеклянные перегородки, лестницы с керамогранитом и коваными ограждениями.",
   chips:["Открытый кирпич","Дубовые панели","Паркет","Стеклянные перегородки","Лестницы","Санузлы"],
   img:["7919","7910","7914","7911","7907","7921","7920","7915","7909","7922","7918","7916","7917","7913"]},
@@ -624,7 +678,7 @@ const P=[
   img:["7939","7946","7947","7938","7940","7944","7906"]}
 ];
 const list=$('#projList');
-P.forEach((p,i)=>{const el=document.createElement('article');el.className='proj'+(i%2?' rev':'');
+let vis=0;P.forEach((p,i)=>{if(p.hide)return;const el=document.createElement('article');el.className='proj'+(vis++%2?' rev':'');
   el.innerHTML=`<div class="proj-img rv"><img src="img/${p.img[0]}.jpg" alt="${p.name}" loading="lazy"><span class="cnt">${p.img.length} фото</span></div>
   <div class="proj-txt"><span class="k rv">${p.k}</span><h3 class="rv d1">${p.name}</h3><p class="rv d2">${p.text}</p>
   <div class="chips rv d2">${p.chips.map(c=>`<span>${c}</span>`).join('')}</div>
@@ -632,6 +686,7 @@ P.forEach((p,i)=>{const el=document.createElement('article');el.className='proj'
   <button class="btn ghost rv d3" type="button" data-p="${i}" data-k="0" style="color:var(--cream)"><span>Все фото объекта</span><span class="ar">→</span></button></div>`;
   el.querySelector('.proj-img').addEventListener('click',()=>openLb(i,0));el.querySelector('.proj-img').style.cursor='zoom-in';
   list.appendChild(el)});
+document.getElementById('dpGrid').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(b)openLb(0,+b.dataset.k)});
 list.addEventListener('click',e=>{const b=e.target.closest('button[data-p]');if(b)openLb(+b.dataset.p,+b.dataset.k)});
 
 /* parallax */
