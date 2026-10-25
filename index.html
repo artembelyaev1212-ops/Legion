@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=1792951453">
+<link rel="stylesheet" href="assets/style.css?v=1792953974">
 <link rel="canonical" href="https://artembelyaev1212-ops.github.io/Legion/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"GeneralContractor","name":"ООО «Легион»","description":"Отделочные и ремонтные работы коммерческих и жилых объектов в Москве и Московской области","url":"https://artembelyaev1212-ops.github.io/Legion/","telephone":"+7-999-440-75-27","image":"https://artembelyaev1212-ops.github.io/Legion/img/og.jpg","areaServed":[{"@type":"City","name":"Москва"},{"@type":"AdministrativeArea","name":"Московская область"}],"address":{"@type":"PostalAddress","addressLocality":"Москва","addressCountry":"RU"},"sameAs":["https://t.me/+79994407527"],"knowsAbout":["Отделка офисов","Отделка ресторанов","Отделка медицинских помещений","Декоративная штукатурка","Дизайн-проект"]}</script>
 <script>document.documentElement.classList.add('js')</script>
@@ -56,7 +56,7 @@
   <section class="hero" id="hero">
     <div class="slides" aria-hidden="true">
       <img id="fxFallback" class="on" src="img/d2.jpg" alt="">
-      <canvas id="fx"></canvas>
+      <canvas id="hero3d"></canvas>
     </div>
     <div class="wrap">
       <span class="eyebrow rv-h">ООО «Легион» · Москва и Московская область</span>
@@ -364,8 +364,9 @@
   <div class="cap" id="lbCap"></div>
 </div>
 
-<script src="assets/data.js?v=1792951453"></script>
-<script src="assets/app.js?v=1792951453"></script>
-<script src="assets/fx.js?v=1792951453"></script>
+<script src="assets/data.js?v=1792953974"></script>
+<script src="assets/app.js?v=1792953974"></script>
+<script type="importmap">{"imports":{"three":"./assets/vendor/three/build/three.module.min.js"}}</script>
+<script type="module" src="assets/hero3d.js?v=1792953974"></script>
 </body>
 </html>
