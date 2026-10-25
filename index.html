@@ -54,13 +54,9 @@
 
 <main>
   <section class="hero" id="hero">
-    <div class="slides" id="slides" aria-hidden="true">
-      <img class="on" src="img/d2.jpg" alt="" data-cap="Дизайн-проект · кабинет руководителя">
-      <img src="img/7911.jpg" alt="" loading="lazy" data-cap="Объект · офис в историческом здании">
-      <img src="img/d10.jpg" alt="" loading="lazy" data-cap="Дизайн-проект · переговорная">
-      <img src="img/7966.jpg" alt="" loading="lazy" data-cap="Объект · ресторан грузинской кухни">
-      <img src="img/d1.jpg" alt="" loading="lazy" data-cap="Дизайн-проект · рабочая зона">
-      <img src="img/7921.jpg" alt="" loading="lazy" data-cap="Объект · зона отдыха в офисе">
+    <div class="slides" aria-hidden="true">
+      <img id="fxFallback" class="on" src="img/d2.jpg" alt="">
+      <canvas id="fx"></canvas>
     </div>
     <div class="wrap">
       <span class="eyebrow rv-h">ООО «Легион» · Москва и Московская область</span>
@@ -81,7 +77,7 @@
         <span><b>Безнал</b></span>
         <span><b>Своя команда</b></span>
         <span><b>Москва и МО</b></span>
-        <span class="slide-cap" id="slideCap" aria-live="polite"></span><div class="dots" id="dots" role="tablist" aria-label="Фото на обложке"></div>
+        <span class="slide-cap fx-stage"><i></i><span id="fxStage">Дизайн-проект «Легион»</span></span>
       </div>
     </div>
   </section>
@@ -370,5 +366,6 @@
 
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/fx.js"></script>
 </body>
 </html>

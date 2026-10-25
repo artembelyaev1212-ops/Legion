@@ -420,3 +420,11 @@ a.proj-img{display:block;color:inherit}
 .example b{display:block;font-family:var(--f-display);font-size:clamp(24px,2.6vw,34px);font-weight:600;margin-top:6px;color:var(--cream)}
 @media (max-width:880px){.perks,.example{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.grain{display:none}.sub-hero .bg img{animation:none}}
+
+/* ===== обложка: отделка из света ===== */
+#fx{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s ease}
+#fx.on{opacity:1}
+#fxFallback{transition:opacity 1.2s ease}
+.fx-stage{display:inline-flex;align-items:center;gap:10px;font-variant-numeric:tabular-nums}
+.fx-stage i{width:8px;height:8px;background:var(--brass);transform:rotate(45deg);box-shadow:0 0 12px var(--brass);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
