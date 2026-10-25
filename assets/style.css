@@ -441,3 +441,139 @@ a.proj-img{display:block;color:inherit}
   .hero.has3d #hero3d{height:min(72svh,640px);bottom:auto;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 70%,transparent 100%)}
   .hero.has3d::after{background:linear-gradient(180deg,rgba(11,9,7,.2) 0%,rgba(11,9,7,0) 12%,rgba(11,9,7,0) 50%,var(--oak) 72%)}
 }
+
+/* ======================================================================
+   ТЕМА «ЧЁРНЫЙ МРАМОР И ЗОЛОТО»
+   ====================================================================== */
+:root{
+  --oak:#070708; --oak-2:#101012; --oak-3:#19191c; --line:rgba(212,175,55,.16);
+  --plaster:#0d0d0f; --plaster-2:rgba(255,255,255,.07); --ink:#F2EEE6; --ink-muted:#a29d94;
+  --cream:#F2EEE6; --muted:#9a958c;
+  --brass:#D4AF37; --brass-2:#F6E3A1; --brass-deep:#C9A13B;
+  --gold-grad:linear-gradient(105deg,#8a6a1f 0%,#c9a13b 14%,#f9eab0 26%,#d4af37 38%,#9c7524 52%,#e7c76a 66%,#fff3c4 74%,#b8902f 86%,#7d5c18 100%);
+}
+@keyframes shine{from{background-position:0% 50%}to{background-position:200% 50%}}
+body{background:#070708}
+.gold,.hero h1 em,.big,.sum span,.quote em,.dp-head .gold,.sub-hero h1 span,.logo,.eyebrow{
+  background:var(--gold-grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+.logo{-webkit-text-fill-color:transparent}
+.logo i,.progress,.fx-stage i{background:var(--gold-grad);background-size:200% 100%;animation:shine 5s linear infinite}
+.eyebrow::before{background:var(--gold-grad);background-size:200% 100%}
+.pf .no{-webkit-text-stroke:1px #D4AF37}
+.btn.primary{background:var(--gold-grad);background-size:200% 100%;animation:shine 6s linear infinite;color:#120e05;box-shadow:0 8px 30px -10px rgba(212,175,55,.55)}
+.btn.primary::before{background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s var(--ease)}
+.btn.primary:hover::before{transform:translateX(120%)}
+.btn.ghost{border-color:rgba(212,175,55,.45);background:rgba(7,7,8,.35);backdrop-filter:blur(8px)}
+.btn.ghost:hover{border-color:#F6E3A1;color:#F6E3A1}
+.light .btn.ghost{border-color:rgba(212,175,55,.45);color:var(--cream)}
+
+/* золотая «живая» рамка */
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spin{to{--ang:360deg}}
+.goldframe{position:relative}
+.goldframe::after{content:"";position:absolute;inset:0;padding:1px;pointer-events:none;
+  background:conic-gradient(from var(--ang),rgba(212,175,55,.1),#f9eab0,rgba(212,175,55,.15) 30%,rgba(212,175,55,.08) 60%,#d4af37 80%,rgba(212,175,55,.1));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 6s linear infinite}
+
+/* секции прозрачные: под ними живой 3D-фон */
+section,.marquee,footer{background:transparent}
+.light,.design,.pitfalls,.partner,.works,.calc-sec{background:linear-gradient(180deg,rgba(7,7,8,.55),rgba(7,7,8,.72))}
+.light{color:var(--cream)}
+.light .lead,.light .vals span,.light .tl span,.light .sign span,.light .perks span{color:var(--ink-muted)}
+.light .eyebrow{color:transparent}
+.marquee{border-color:var(--line);background:rgba(7,7,8,.6)}
+.mq{color:#6f6a62}
+.mq span::after{background:var(--gold-grad)}
+footer{background:rgba(7,7,8,.85)}
+.top.solid,.page-sub .top{background:rgba(7,7,8,.82)}
+body::before{background:#070708}
+.mnav{background:#070708}
+
+/* карточки и формы: тёмное стекло с мраморной фактурой */
+.form,.calc,.perks div,.gives>div,.pf article{background:rgba(14,14,16,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.form{border:1px solid var(--line)}
+.calc{border:1px solid var(--line);background:rgba(14,14,16,.82) url(../img/tex/marble.jpg) center/900px}
+.calc-in{background:rgba(10,10,12,.86)}
+.calc-out{background:rgba(5,5,6,.9);border-left:1px solid var(--line)}
+.calc::before{background:radial-gradient(420px circle at var(--mx,70%) var(--my,30%),rgba(212,175,55,.14),transparent 60%)}
+.chipset button,.levels button,.seg button{background:rgba(255,255,255,.03);border-color:var(--line);color:var(--cream)}
+.chipset button[aria-pressed="true"],.levels button[aria-pressed="true"],.seg button[aria-pressed="true"]{background:var(--gold-grad);background-size:200% 100%;animation:shine 6s linear infinite;color:#120e05;border-color:transparent}
+.levels button[aria-pressed="true"] span{color:#3a2c0c}
+.levels button span{color:var(--ink-muted)}
+.form input,.form select,.form textarea{background:rgba(255,255,255,.04);color:var(--cream);border:1px solid var(--line)}
+.form input:focus,.form select:focus,.form textarea:focus{background:rgba(255,255,255,.07);border-color:#D4AF37}
+.form select option{background:#111;color:#eee}
+.num{border-color:#D4AF37}
+.area input[type=range]{background:linear-gradient(#D4AF37,#D4AF37) 0/var(--p,10%) 100% no-repeat,rgba(255,255,255,.12)}
+.area input[type=range]::-webkit-slider-thumb{background:#070708;border-color:#D4AF37}
+.area input[type=range]::-moz-range-thumb{background:#070708;border-color:#D4AF37}
+.sw .tr{background:rgba(255,255,255,.12)}
+.sw input:checked+.tr{background:#C9A13B}
+.sign .av{background:var(--gold-grad);background-size:200% 100%;animation:shine 6s linear infinite;color:#120e05}
+.vals div{border-color:#D4AF37}
+.out{background:rgba(255,255,255,.04)}
+.cline{border-color:var(--line)}
+.copy{border-color:rgba(212,175,55,.5);color:var(--cream)}
+.tl::before{background:var(--line)}
+.tl .prog{background:var(--gold-grad)}
+.tl div.st::before{background:#070708;border-color:#D4AF37}
+.tl.in div.st::before{background:#D4AF37;box-shadow:0 0 14px rgba(212,175,55,.6)}
+.perks{background:var(--line);border-color:var(--line)}
+.design{background:linear-gradient(180deg,rgba(7,7,8,.4),rgba(7,7,8,.7))}
+.dp-grid button,.proj-img,.svc-view,.me-photo,.ba,.masonry button,.next a,.work-strip figure{box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+.me-photo::before{border-color:rgba(212,175,55,.5)}
+.me-photo .tag{background:var(--gold-grad);background-size:200% 100%;animation:shine 6s linear infinite;color:#120e05}
+.proj-img .go{background:var(--gold-grad);background-size:200% 100%;color:#120e05}
+.chips span{border-color:var(--line);color:#cfc8bb}
+.hero::after{background:linear-gradient(90deg,rgba(7,7,8,.86) 0%,rgba(7,7,8,.5) 32%,rgba(7,7,8,0) 58%),linear-gradient(180deg,rgba(7,7,8,.4) 0%,rgba(7,7,8,0) 14%,rgba(7,7,8,0) 78%,#070708 100%)}
+.hero.has3d::after{background:linear-gradient(90deg,rgba(7,7,8,.86) 0%,rgba(7,7,8,.5) 32%,rgba(7,7,8,0) 58%),linear-gradient(180deg,rgba(7,7,8,.4) 0%,rgba(7,7,8,0) 14%,rgba(7,7,8,0) 78%,#070708 100%)}
+@media (max-width:700px){.hero.has3d::after{background:linear-gradient(180deg,rgba(7,7,8,.2) 0%,rgba(7,7,8,0) 12%,rgba(7,7,8,0) 50%,#070708 72%)}}
+.sub-hero::after{background:linear-gradient(180deg,rgba(7,7,8,.5),rgba(7,7,8,.35) 40%,rgba(7,7,8,.92) 85%,#070708)}
+.cta-band{background:var(--gold-grad);background-size:200% 100%;animation:shine 9s linear infinite}
+.works-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:24px}
+.works .ba-grid{padding-block:24px}
+@media (max-width:880px){.works-head{grid-template-columns:1fr}}
+
+/* фон 3D */
+#bg3d{position:fixed;inset:0;width:100%;height:100%;z-index:-1;display:block;pointer-events:none;opacity:0;transition:opacity 1.2s}
+#bg3d.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.gold,.hero h1 em,.big,.sum span,.quote em,.logo,.eyebrow,.btn.primary,.goldframe::after,.cta-band{animation:none}}
+
+/* ===== обложка «пирог отделки» ===== */
+.explode{height:520vh;position:relative;padding:0}
+.ex-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#070708}
+#exCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s}
+#exCanvas.on{opacity:1}
+.ex-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ex-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,7,8,.82) 0%,rgba(7,7,8,.45) 30%,rgba(7,7,8,0) 55%),linear-gradient(180deg,rgba(7,7,8,.55) 0%,rgba(7,7,8,0) 18%,rgba(7,7,8,0) 80%,rgba(7,7,8,.9) 100%)}
+#exLabels{position:absolute;inset:0;pointer-events:none;z-index:2}
+.ex-label{position:absolute;left:0;top:0;opacity:0;display:flex;align-items:center;gap:10px;white-space:nowrap;will-change:transform,opacity;transition:opacity .25s}
+.ex-label i{width:34px;height:1px;background:var(--gold-grad);background-size:200% 100%;animation:shine 4s linear infinite;flex:none}
+.ex-label i::before{content:"";position:absolute;width:7px;height:7px;margin:-3px 0 0 -3px;background:#F6E3A1;transform:rotate(45deg);box-shadow:0 0 10px #D4AF37}
+.ex-label span{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#F2EEE6;background:rgba(7,7,8,.62);border:1px solid rgba(212,175,55,.35);padding:5px 10px;backdrop-filter:blur(6px)}
+.ex-label.l-furn span{color:#120e05;background:var(--gold-grad);background-size:200% 100%;animation:shine 6s linear infinite;border:0}
+.ex-steps{position:absolute;inset:0;z-index:3;pointer-events:none;display:flex;align-items:flex-end;padding-block:0 min(12vh,110px)}
+.ex-step{position:absolute;bottom:min(12vh,110px);max-width:min(560px,92vw);opacity:0;transition:none}
+.ex-step h1{font-family:var(--f-display);font-weight:800;font-size:clamp(40px,6.6vw,96px);line-height:.98;letter-spacing:-.03em;margin:20px 0 0}
+.ex-step h2{font-size:clamp(30px,4.2vw,58px);margin:16px 0 0;line-height:1.02}
+.ex-step h1 em,.ex-step h2 em{font-style:normal;background:var(--gold-grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+.ex-step .lead{color:#d6cfc3;margin-top:20px;max-width:46ch}
+.ex-step .cta{margin-top:28px}
+.ex-hint{position:absolute;right:max(24px,env(safe-area-inset-right,0px));bottom:28px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#bfb6a6}
+.ex-hint i{width:1px;height:46px;background:linear-gradient(#D4AF37,transparent);animation:hint 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes hint{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media (max-width:760px){
+  .ex-shade{background:linear-gradient(180deg,rgba(7,7,8,.5) 0%,rgba(7,7,8,0) 20%,rgba(7,7,8,.15) 45%,rgba(7,7,8,.92) 78%)}
+  .ex-step{bottom:max(28px,env(safe-area-inset-bottom,0px))}
+  .ex-label span{font-size:10.5px;padding:4px 7px}
+  .ex-label i{width:18px}
+  .ex-hint{display:none}
+}
+/* под ключ */
+.tk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tk>div{background:rgba(14,14,16,.7);backdrop-filter:blur(12px);padding:30px 26px;display:flex;flex-direction:column;gap:10px;min-height:190px}
+.tk b{font-family:var(--f-display);font-weight:600;font-size:18px}
+.tk span{color:var(--ink-muted);font-size:15.5px}
+@media (max-width:980px){.tk{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.tk{grid-template-columns:1fr}}
+.ex-label i{position:relative}

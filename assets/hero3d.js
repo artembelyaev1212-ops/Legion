@@ -5,6 +5,7 @@ import { EffectComposer } from './vendor/three/jsm/postprocessing/EffectComposer
 import { RenderPass } from './vendor/three/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from './vendor/three/jsm/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from './vendor/three/jsm/postprocessing/OutputPass.js';
+import { RoomEnvironment } from './vendor/three/jsm/environments/RoomEnvironment.js';
 
 const canvas = document.getElementById('hero3d');
 const hero = document.getElementById('hero');
@@ -15,9 +16,10 @@ const BASE = window.BASE || '';
 
 const SHOTS = [
   { f: 'd2', name: 'Переговорная зона' },
+  { f: 'n3', name: 'Переговорная, вид от окна' },
   { f: 'd1', name: 'Рабочая зона' },
-  { f: 'd10', name: 'Переговорная у окна' },
-  { f: 'd3', name: 'Кабинет у панорамных окон' }
+  { f: 'n4', name: 'Встроенная мебель' },
+  { f: 'd10', name: 'Переговорная у окна' }
 ];
 
 function start() {
@@ -31,8 +33,10 @@ function start() {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x0b0907);
-  scene.fog = new THREE.FogExp2(0x0b0907, 0.055);
+  scene.background = new THREE.Color(0x070708);
+  scene.fog = new THREE.FogExp2(0x070708, 0.05);
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
   const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
   camera.position.set(0, 0.7, 10);
 
@@ -67,10 +71,11 @@ function start() {
   }
 
   /* ---------- плита ---------- */
-  const stoneMat = new THREE.MeshStandardMaterial({ map: noiseTex([46, 41, 36], 26), roughness: .88, metalness: .05 });
+  const mtex = new THREE.TextureLoader().load(BASE + 'img/tex/marble.jpg'); mtex.colorSpace = THREE.SRGBColorSpace; mtex.anisotropy = 4;
+  const stoneMat = new THREE.MeshPhysicalMaterial({ map: mtex, roughness: .2, metalness: 0, clearcoat: 1, clearcoatRoughness: .06, envMapIntensity: .6 });
   const plinth = new THREE.Mesh(new THREE.BoxGeometry(3.9, .62, 2.3, 1, 1, 1), stoneMat);
   plinth.position.y = -1.05; stage.add(plinth);
-  const lip = new THREE.Mesh(new THREE.BoxGeometry(4.06, .06, 2.46), new THREE.MeshStandardMaterial({ color: 0xd2a15a, metalness: 1, roughness: .32 }));
+  const lip = new THREE.Mesh(new THREE.BoxGeometry(4.06, .06, 2.46), new THREE.MeshPhysicalMaterial({ color: 0xffc35a, metalness: 1, roughness: .16, envMapIntensity: 1.6 }));
   lip.position.y = -0.72; stage.add(lip);
   /* обломки под плитой — «кусок здания» */
   for (let i = 0; i < 9; i++) {
@@ -106,7 +111,7 @@ function start() {
   portal.position.set(0, .4, 0); stage.add(portal);
   const back = new THREE.Mesh(new THREE.BoxGeometry(pw + .12, phh + .12, .08), new THREE.MeshStandardMaterial({ color: 0x15110d, roughness: .6 }));
   back.position.set(0, .4, -.06); stage.add(back);
-  const brass = new THREE.MeshStandardMaterial({ color: 0xd8a85e, metalness: 1, roughness: .28, emissive: 0x3a2508, emissiveIntensity: .6 });
+  const brass = new THREE.MeshPhysicalMaterial({ color: 0xffc35a, metalness: 1, roughness: .14, clearcoat: .6, envMapIntensity: 1.6 });
   const fw = .07;
   [[0, phh / 2 + fw / 2, pw + fw * 2, fw], [0, -phh / 2 - fw / 2, pw + fw * 2, fw], [pw / 2 + fw / 2, 0, fw, phh], [-pw / 2 - fw / 2, 0, fw, phh]].forEach(([x, y, w, h]) => {
     const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, .1), brass); m.position.set(x, .4 + y, .01); stage.add(m);
@@ -142,9 +147,9 @@ function start() {
   /* ---------- кружащие элементы отделки ---------- */
   const dummy = new THREE.Object3D();
   const kinds = [
-    { geo: new THREE.BoxGeometry(.38, .045, .38), mat: new THREE.MeshStandardMaterial({ map: noiseTex([214, 208, 198], 18, 128, true), roughness: .35, metalness: .05 }), n: 26 },
+    { geo: new THREE.BoxGeometry(.38, .045, .38), mat: stoneMat, n: 26 },
     { geo: new THREE.BoxGeometry(1.0, .07, .17), mat: new THREE.MeshStandardMaterial({ map: woodTex(), roughness: .6 }), n: 18 },
-    { geo: new THREE.BoxGeometry(.3, .3, .025), mat: new THREE.MeshStandardMaterial({ color: 0xd2a15a, metalness: 1, roughness: .3 }), n: 14 },
+    { geo: new THREE.BoxGeometry(.3, .3, .025), mat: new THREE.MeshPhysicalMaterial({ color: 0xffc35a, metalness: 1, roughness: .15, envMapIntensity: 1.7 }), n: 18 },
     { geo: new THREE.BoxGeometry(.55, .55, .04), mat: new THREE.MeshStandardMaterial({ color: 0xe9e2d6, roughness: .9 }), n: 12 },
     { geo: new THREE.DodecahedronGeometry(.12, 0), mat: stoneMat, n: 30 }
   ];
